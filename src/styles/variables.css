@@ -1,0 +1,14 @@
+:root {
+  --body-bg-color: #ffff;
+  --body-text-color: #212121;
+  font-family: Arial, sans-serif;
+  --secondary-text-color: #808080;
+  --font-size-small: 12px;
+  --font-size-medium: 17px;
+  --font-size-large: 40px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}

@@ -1,0 +1,86 @@
+.container {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin: 0 auto;
+  /* min-width: 320px; */
+  padding: 0 10px;
+  width: 100%;
+}
+/* 
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 70px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 2560px;
+    padding: 0 150px;
+  }
+} */
+
+/* ======================================== */
+
+/* === Мобильные устройства (320px - 767px) === */ /* 1rem = 12px (75% от 16px) */
+/* @media only screen and (min-width: 20rem) and (max-width: 47.9375rem) {
+  html {
+    font-size: 75%;
+  }
+  .container {
+    padding: 0 1rem;
+  }
+} */
+
+/* === Планшеты (768px - 1023px) === */ /* 1rem = 16px */
+/* @media only screen and (min-width: 48rem) and (max-width: 63.9375rem) {
+  html {
+    font-size: 100%;
+  }
+  .container {
+    padding: 0 7rem;
+  }
+} */
+
+/* === Десктоп (1024px и больше) === */ /* 1rem = 20px */
+/* @media only screen and (min-width: 64rem) {
+  html {
+    font-size: 125%;
+  }
+  .container {
+    padding: 0 15rem;
+  }
+} */
+
+/* ======================================== */
+
+/* === Мобильные устройства (320px - 767px) === */
+/* 1rem = 12px (75% от 16px) */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+/* === Планшеты (768px - 1023px) === */
+/* 1rem = 16px */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  html {
+    font-size: 100%;
+  }
+  .container {
+    padding: 0 70px;
+  }
+}
+
+/* === Десктоп (1024px и больше) === */
+/* 1rem = 20px */
+@media only screen and (min-width: 1024px) {
+  html {
+    font-size: 125%;
+  }
+  .container {
+    padding: 0 150px;
+  }
+}

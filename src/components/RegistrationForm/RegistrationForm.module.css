@@ -1,0 +1,90 @@
+.registrationForm_section {
+  padding-top: 150px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registrationForm_form {
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.registrationForm_label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.registrationForm_span {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.registrationForm_inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.registrationForm_icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  white-space: nowrap;
+  font-size: 20px;
+}
+
+.registrationForm_field {
+  font-size: 2rem;
+  color: #333;
+  outline: none;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid black;
+  background-color: #fff;
+  padding: 6px 6px 6px 40px;
+  width: 100%;
+}
+
+.registrationForm_field:focus {
+  border-color: #007bff;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+.registrationForm_error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  white-space: nowrap;
+  color: #ff4d4f;
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+.registrationForm_button {
+  margin-top: 10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.4s ease-in-out;
+  padding: 8px 10px;
+  background-color: #007bff;
+}
+
+.registrationForm_button:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.registrationForm_button:hover:not(:disabled) {
+  background-color: #0056b3;
+}

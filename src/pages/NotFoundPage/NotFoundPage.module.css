@@ -1,0 +1,38 @@
+@media only screen and (min-width: 768px) {
+  .notFoundPage_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+
+  .notFoundPage_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+  }
+
+  .notFoundPage_title {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .notFoundPage_link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 60px;
+    font-weight: bold;
+    color: deeppink;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  .notFoundPage_icon {
+    font-size: 100px;
+  }
+
+  .notFoundPage_link:hover {
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,17 @@
+@media only screen and (min-width: 768px) {
+  .errorMessage_section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .errorMessage_container {
+    padding: 0 100px;
+  }
+
+  .errorMessage_titele {
+    font-size: 40px;
+    padding: 40px;
+    border-radius: 3px;
+    border: 2px solid rgb(143, 10, 81);
+  }
+}

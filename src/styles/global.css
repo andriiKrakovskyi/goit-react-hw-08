@@ -1,0 +1,43 @@
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%; /* 1 rem = 10 px */
+}
+
+/* 62.5%  = 10 px при учёте, 
+что стандартный размер шрифта браузера по умолчанию = 16 px. 
+16px = 100%, 10px = 62.5%. */
+
+main {
+  flex-grow: 1;
+}
+
+body {
+  background-color: var(--body-bg-color);
+  color: var(--body-text-color);
+  min-width: 320px;
+  max-width: 100%;
+  min-height: 100dvh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 0;
+}
+button {
+  cursor: pointer;
+}
+
+.visually_hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

@@ -1,0 +1,15 @@
+.homePage_wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 60dvh;
+}
+
+.homePage_title {
+  font-size: 3.5rem;
+}
+
+.homePage_icon {
+  font-size: 3.5rem;
+}

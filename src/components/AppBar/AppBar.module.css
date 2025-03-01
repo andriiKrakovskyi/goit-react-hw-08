@@ -1,0 +1,7 @@
+.appBar_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid #2a363b;
+  padding: 20px 10px 10px 0px;
+}
