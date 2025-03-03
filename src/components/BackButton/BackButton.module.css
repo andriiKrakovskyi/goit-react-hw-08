@@ -1,0 +1,22 @@
+.backButton_link {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0px 4px;
+  border-radius: 8px;
+  height: 20px;
+}
+
+.backButton_span {
+  font-size: 1.3rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.backButton_link:hover {
+  background-color: rgb(80, 80, 80);
+}
+
+.backButton_icon {
+  font-size: 13px;
+}

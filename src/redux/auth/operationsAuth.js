@@ -52,16 +52,20 @@ export const logoutThunk = createAsyncThunk(
 );
 
 // ! ========================================================
+
 // export const refreshUserThunk = createAsyncThunk(
 //   'auth/refresh',
 //   async (_, thunkAPI) => {
 //     const state = thunkAPI.getState();
-//     const persistedToken = state.auth.token;
+//     const persistedToken = state.authNameSlice.token;
 //     if (!persistedToken) return thunkAPI.rejectWithValue('No token');
+
 //     setAuthHeader(persistedToken);
+
 //     try {
 //       const { data } = await api.get('/users/current');
 //       return data;
+
 //     } catch (error) {
 //       return thunkAPI.rejectWithValue(error.message);
 //     }
@@ -70,22 +74,44 @@ export const logoutThunk = createAsyncThunk(
 
 export const refreshUserThunk = createAsyncThunk(
   'auth/refresh',
-  async (arg, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-    if (!persistedToken) return thunkAPI.rejectWithValue('No token');
-    setAuthHeader(persistedToken);
-
-    const { signal } = arg;
-
+  async (_, thunkAPI) => {
     try {
-      const { data } = await api.get('/users/current', { signal });
+      const persistedToken = thunkAPI.getState().authNameSlice.token;
+
+      if (persistedToken === null) {
+        return thunkAPI.rejectWithValue('Token is not exist!');
+      }
+
+      setAuthHeader(persistedToken);
+      const { data } = await api.get('/users/current');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
+
+// export const refreshUserThunk = createAsyncThunk(
+//   'auth/refresh',
+//   async (arg, thunkAPI) => {
+//     try {
+//       const persistedToken = thunkAPI.getState().authNameSlice.token;
+
+//       if (persistedToken === null) {
+//         return thunkAPI.rejectWithValue('Token is not exist!');
+//       }
+
+//       setAuthHeader(persistedToken);
+
+//       const { signal } = arg;
+
+//       const { data } = await api.get('/users/current', { signal });
+//       return data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   },
+// );
 //! ==========================================================================
 // !1. Создание экземпляра Axios
 // Здесь создаётся новый экземпляр Axios с базовым

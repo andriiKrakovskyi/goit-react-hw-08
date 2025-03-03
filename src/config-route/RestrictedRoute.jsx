@@ -18,13 +18,8 @@ export const RestrictedRoute = ({ children }) => {
 // Если isLoggedIn === true → перенаправляет на redirectTo.
 // Если isLoggedIn === false → рендерит component.
 
-/**
- * - If the route is restricted and the user is logged in,
- *  render a <Navigate> to redirectTo
- * - Otherwise render the component
- */
-
-// export const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
+// const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
 //   const isLoggedIn = useSelector(selectIsLoggedIn);
 //   return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 // };
+// export default RestrictedRoute;

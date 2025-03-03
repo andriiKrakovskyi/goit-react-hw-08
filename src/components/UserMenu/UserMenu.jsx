@@ -9,9 +9,9 @@ export default function UserMenu() {
 
   return (
     <div className={s.userMenu_wrapper}>
-      <p className={s.userMenu_username}>
+      <h3 className={s.userMenu_username}>
         Welcome,<span className={s.userMenu_username_span}> {user.email}</span>
-      </p>
+      </h3>
 
       <button
         className={s.userMenu_button}

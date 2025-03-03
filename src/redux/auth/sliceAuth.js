@@ -17,7 +17,7 @@ const initialState = {
 };
 
 const authSlice = createSlice({
-  name: 'authNameSlice',
+  name: 'authNameSlice', //имя slice
   initialState,
   extraReducers: (builder) => {
     //! registerThunk

@@ -14,6 +14,18 @@ export const fetchContacts = createAsyncThunk(
   },
 );
 
+// export const fetchContacts = createAsyncThunk(
+//   'contacts/fetchAll',
+//   async (_, thunkAPI) => {
+//     try {
+//       const { data } = await axios.get('/contacts');
+//       return data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   },
+// );
+
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (body, thunkAPI) => {
@@ -39,38 +51,15 @@ export const deleteContact = createAsyncThunk(
   },
 );
 
-// export const fetchContacts = createAsyncThunk(
-//   'contacts/fetchAll',
-//   async (_, thunkAPI) => {
-//     try {
-//       const { data } = await axios.get('/contacts');
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   },
-// );
-
 export const editContact = createAsyncThunk(
   'contact/editTodo',
   async (body, thunkAPI) => {
     try {
-      console.log('Current API headers:', api.defaults.headers.common);
       const { id, ...changeData } = body;
-
-      // Проверяем отправляемые данные
-
       const { data } = await api.patch(`/contacts/${id}`, changeData);
-
-      // console.log('Sending edit request:', body); // Проверяем, что передаем в API
-
-      console.log('Edit response:', data);
 
       return data;
     } catch (error) {
-      console.error('Edit error:', error.response?.data || error.message);
-      console.error('Edit error:', error);
-
       return thunkAPI.rejectWithValue(error.message);
     }
   },

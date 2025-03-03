@@ -1,0 +1,37 @@
+.footer_wrapper {
+  text-align: center;
+  padding: 20px;
+  /* position: fixed;
+  bottom: 0; */
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
+.footer_title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+}
+
+.footer_nav {
+  margin-top: 10px;
+}
+
+.footer_list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer_text {
+  font-size: 1.4rem;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer_text:hover {
+  opacity: 0.6;
+}

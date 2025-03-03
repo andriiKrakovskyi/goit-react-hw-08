@@ -31,6 +31,6 @@ createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-    <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+    <Toaster position="top-right" toastOptions={{ duration: 5000 }} />
   </StrictMode>,
 );

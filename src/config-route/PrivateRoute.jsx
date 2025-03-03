@@ -4,7 +4,7 @@ import { selectIsLoggedIn } from '../redux/auth/selectorsAuth';
 
 export const PrivateRoute = ({ children }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log(isLoggedIn);
+
   return isLoggedIn ? children : <Navigate to="/login" />;
 };
 
@@ -24,4 +24,11 @@ export const PrivateRoute = ({ children }) => {
 //   const isLoggedIn = useSelector(selectIsLoggedIn);
 
 //   return isLoggedIn ? Component : <Navigate to={redirectTo} />;
+// };
+
+// export const PrivateRoute = ({ children }) => {
+//   const isLoggedIn = useSelector(selectIsLoggedIn);
+
+//   if (isLoggedIn === null) return null; // Ждём обновления Redux
+//   return isLoggedIn ? children : <Navigate to="/" />;
 // };

@@ -38,6 +38,7 @@ const contactSlice = createSlice({
     //! addContact
     builder.addCase(addContact.pending, (state) => {
       state.contacts.loading = true;
+      state.contacts.error = null;
     });
 
     builder.addCase(addContact.fulfilled, (state, action) => {
@@ -53,6 +54,7 @@ const contactSlice = createSlice({
     //! deleteContact
     builder.addCase(deleteContact.pending, (state) => {
       state.contacts.loading = true;
+      state.contacts.error = null;
     });
 
     builder.addCase(deleteContact.fulfilled, (state, action) => {
@@ -70,6 +72,7 @@ const contactSlice = createSlice({
     //! editContact
     builder.addCase(editContact.pending, (state) => {
       state.contacts.loading = true;
+      state.contacts.error = null;
     });
 
     builder.addCase(editContact.fulfilled, (state, action) => {
