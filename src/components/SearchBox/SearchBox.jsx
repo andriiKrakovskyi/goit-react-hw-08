@@ -18,6 +18,7 @@ export default function SearchBox() {
         <span>Find contacts by name</span>
 
         <input
+          autoComplete="off"
           className={s.searchBox_input}
           type="text"
           name="search"

@@ -5,6 +5,7 @@ import {
   deleteContact,
   editContact,
 } from './operationsContacts';
+import { logoutThunk } from '../auth/operationsAuth';
 
 const initialState = {
   contacts: {
@@ -20,83 +21,89 @@ const contactSlice = createSlice({
   // extraReducers Используется когда надо делать HTTP-запрос
   extraReducers: (builder) => {
     //! fetchContacts
-    builder.addCase(fetchContacts.pending, (state) => {
-      state.contacts.loading = true;
-      state.contacts.error = null;
-    });
+    builder
+      .addCase(fetchContacts.pending, (state) => {
+        state.contacts.loading = true;
+        state.contacts.error = null;
+      })
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.contacts.items = action.payload;
+        state.contacts.loading = false;
+      })
+      .addCase(fetchContacts.rejected, (state, action) => {
+        state.contacts.loading = false;
+        state.contacts.error = action.payload;
+      })
+      //! addContact
+      .addCase(addContact.pending, (state) => {
+        state.contacts.loading = true;
+        state.contacts.error = null;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.contacts.items.push(action.payload);
+        state.contacts.loading = false;
+      })
 
-    builder.addCase(fetchContacts.fulfilled, (state, action) => {
-      state.contacts.items = action.payload;
-      state.contacts.loading = false;
-    });
+      //! logoutThunk
+      // Когда logoutThunk успешно выполняется, глобальное состояние Redux для этого
+      // slice сбрасывается в изначальное состояние (initialState),
+      //  очищая данные, например, пользователя, токены и т. д.
+      // .addCase(logoutThunk.fulfilled, () => initialState)
 
-    builder.addCase(fetchContacts.rejected, (state, action) => {
-      state.contacts.loading = false;
-      state.contacts.error = action.payload;
-    });
+      .addCase(logoutThunk.fulfilled, (state) => {
+        state.contacts.items = [];
+        state.contacts.loading = false;
+        state.contacts.error = null;
+      })
 
-    //! addContact
-    builder.addCase(addContact.pending, (state) => {
-      state.contacts.loading = true;
-      state.contacts.error = null;
-    });
+      .addCase(addContact.rejected, (state, action) => {
+        state.contacts.loading = false;
+        state.contacts.error = action.payload;
+      })
 
-    builder.addCase(addContact.fulfilled, (state, action) => {
-      state.contacts.items.push(action.payload);
-      state.contacts.loading = false;
-    });
+      //! deleteContact
+      .addCase(deleteContact.pending, (state) => {
+        state.contacts.loading = true;
+        state.contacts.error = null;
+      })
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.contacts.items = state.contacts.items.filter(
+          (item) => item.id !== action.payload,
+        );
+        state.contacts.loading = false;
+      })
+      .addCase(deleteContact.rejected, (state, action) => {
+        state.contacts.loading = false;
+        state.contacts.error = action.payload;
+      })
 
-    builder.addCase(addContact.rejected, (state, action) => {
-      state.contacts.loading = false;
-      state.contacts.error = action.payload;
-    });
+      //! editContact
+      .addCase(editContact.pending, (state) => {
+        state.contacts.loading = true;
+        state.contacts.error = null;
+      })
 
-    //! deleteContact
-    builder.addCase(deleteContact.pending, (state) => {
-      state.contacts.loading = true;
-      state.contacts.error = null;
-    });
+      .addCase(editContact.fulfilled, (state, action) => {
+        const itemIndex = state.contacts.items.findIndex(
+          (item) => item.id === action.payload.id,
+        );
+        if (itemIndex !== -1) {
+          state.contacts.items[itemIndex] = action.payload;
+        }
+        state.contacts.loading = false;
+      })
 
-    builder.addCase(deleteContact.fulfilled, (state, action) => {
-      state.contacts.items = state.contacts.items.filter(
-        (item) => item.id !== action.payload,
-      );
-      state.contacts.loading = false;
-    });
+      //.addCase(editContact.fulfilled, (state, action) => {
+      //   state.contacts.items = state.contacts.items.map((item) =>
+      //     item.id === action.payload.id ? action.payload : item,
+      //   );
+      //   state.contacts.loading = false;
+      // })
 
-    builder.addCase(deleteContact.rejected, (state, action) => {
-      state.contacts.loading = false;
-      state.contacts.error = action.payload;
-    });
-
-    //! editContact
-    builder.addCase(editContact.pending, (state) => {
-      state.contacts.loading = true;
-      state.contacts.error = null;
-    });
-
-    builder.addCase(editContact.fulfilled, (state, action) => {
-      const itemIndex = state.contacts.items.findIndex(
-        (item) => item.id === action.payload.id,
-      );
-
-      if (itemIndex !== -1) {
-        state.contacts.items[itemIndex] = action.payload;
-      }
-      state.contacts.loading = false;
-    });
-
-    // builder.addCase(editContact.fulfilled, (state, action) => {
-    //   state.contacts.items = state.contacts.items.map((item) =>
-    //     item.id === action.payload.id ? action.payload : item,
-    //   );
-    //   state.contacts.loading = false;
-    // });
-
-    builder.addCase(editContact.rejected, (state, action) => {
-      state.contacts.loading = false;
-      state.contacts.error = action.payload;
-    });
+      .addCase(editContact.rejected, (state, action) => {
+        state.contacts.loading = false;
+        state.contacts.error = action.payload;
+      });
   },
 });
 

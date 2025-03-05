@@ -51,30 +51,9 @@ export const logoutThunk = createAsyncThunk(
   },
 );
 
-// ! ========================================================
-
-// export const refreshUserThunk = createAsyncThunk(
-//   'auth/refresh',
-//   async (_, thunkAPI) => {
-//     const state = thunkAPI.getState();
-//     const persistedToken = state.authNameSlice.token;
-//     if (!persistedToken) return thunkAPI.rejectWithValue('No token');
-
-//     setAuthHeader(persistedToken);
-
-//     try {
-//       const { data } = await api.get('/users/current');
-//       return data;
-
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   },
-// );
-
 export const refreshUserThunk = createAsyncThunk(
   'auth/refresh',
-  async (_, thunkAPI) => {
+  async (arg, thunkAPI) => {
     try {
       const persistedToken = thunkAPI.getState().authNameSlice.token;
 
@@ -83,7 +62,10 @@ export const refreshUserThunk = createAsyncThunk(
       }
 
       setAuthHeader(persistedToken);
-      const { data } = await api.get('/users/current');
+
+      const { signal } = arg;
+
+      const { data } = await api.get('/users/current', { signal });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -93,7 +75,7 @@ export const refreshUserThunk = createAsyncThunk(
 
 // export const refreshUserThunk = createAsyncThunk(
 //   'auth/refresh',
-//   async (arg, thunkAPI) => {
+//   async (_, thunkAPI) => {
 //     try {
 //       const persistedToken = thunkAPI.getState().authNameSlice.token;
 
@@ -102,16 +84,15 @@ export const refreshUserThunk = createAsyncThunk(
 //       }
 
 //       setAuthHeader(persistedToken);
-
-//       const { signal } = arg;
-
-//       const { data } = await api.get('/users/current', { signal });
+//       const { data } = await api.get('/users/current');
 //       return data;
 //     } catch (error) {
+//       console.log(error);
 //       return thunkAPI.rejectWithValue(error.message);
 //     }
 //   },
 // );
+
 //! ==========================================================================
 // !1. Создание экземпляра Axios
 // Здесь создаётся новый экземпляр Axios с базовым

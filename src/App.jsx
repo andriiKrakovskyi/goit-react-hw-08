@@ -4,9 +4,8 @@ import { useEffect } from 'react';
 import { selectIsRefreshing } from './redux/auth/selectorsAuth';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUserThunk } from './redux/auth/operationsAuth';
-import { PrivateRoute } from './config-route/PrivateRoute';
-// import { PublicRoute } from './config-route/PublicRoute';
-import { RestrictedRoute } from './config-route/RestrictedRoute';
+import PrivateRoute from './config-route/PrivateRoute';
+import PublicRoute from './config-route/PublicRoute';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Layout from './components/Layout/Layout';
 import LayoutAuth from './components/LayoutAuth/LayoutAuth';
@@ -22,18 +21,18 @@ function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
 
-  useEffect(() => {
-    dispatch(refreshUserThunk());
-  }, [dispatch]);
-
   // useEffect(() => {
-  //   const abortController = new AbortController();
-  //   dispatch(refreshUserThunk({ signal: abortController.signal }));
-
-  //   return () => {
-  //     abortController.abort();
-  //   };
+  //   dispatch(refreshUserThunk());
   // }, [dispatch]);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    dispatch(refreshUserThunk({ signal: abortController.signal }));
+
+    return () => {
+      abortController.abort();
+    };
+  }, [dispatch]);
 
   return isRefreshing ? null : (
     <Routes>
@@ -41,31 +40,13 @@ function App() {
         <Route index element={<HomePage />} />
 
         <Route
-          path="contacts"
+          path="/contacts"
           element={
-            <PrivateRoute redirectTo="/">
+            <PrivateRoute>
               <ContactsPage />
             </PrivateRoute>
           }
         />
-
-        {/* <Route
-            path="/login"
-            element={
-              <RestrictedRoute redirectTo="/contacts">
-                <LoginPage />
-              </RestrictedRoute>
-            }
-          /> */}
-
-        {/* <Route
-            path="/register"
-            element={
-              <PublicRoute redirectTo="/">
-                <RegistrationPage />
-              </PublicRoute>
-            }
-          /> */}
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>
@@ -74,27 +55,17 @@ function App() {
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/contacts">
-              <LoginPage />
-            </RestrictedRoute>
+            <PublicRoute component={<LoginPage />} redirectTo="/contacts" />
           }
         />
-
-        {/* <Route
-          path="/register"
-          element={
-            <PublicRoute redirectTo="/">
-              <RegistrationPage />
-            </PublicRoute>
-          }
-        /> */}
 
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/contacts">
-              <RegistrationPage />
-            </RestrictedRoute>
+            <PublicRoute
+              component={<RegistrationPage />}
+              redirectTo="/contacts"
+            />
           }
         />
       </Route>

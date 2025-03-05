@@ -22,7 +22,8 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-// const stage = import.meta.env.MODE;
+const stage = import.meta.env.MODE;
+
 export const store = configureStore({
   reducer: {
     authNameSlice: persistReducer(authPersistConfig, authReducer),
@@ -35,8 +36,8 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  // делать обязательно когда сайт не в разработке.
-  // devTools: stage === 'development',
+  //! делать обязательно когда сайт не в разработке.
+  devTools: stage === 'development',
 });
 
 export const persistor = persistStore(store);

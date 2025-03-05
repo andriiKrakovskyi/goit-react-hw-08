@@ -5,6 +5,7 @@ import Contact from '../Contact/Contact.jsx';
 
 export default function ContactList() {
   const contacts = useSelector(selectFilteredContacts);
+  console.log('TEST', contacts);
 
   return (
     <section className={s.contactList_section}>
@@ -15,6 +16,7 @@ export default function ContactList() {
           </li>
         ))}
       </ul>
+
       {/* Показываем сообщение, если нет совпадений */}
       {contacts.length === 0 && (
         <p className={s.contactList_message}>No matches found</p>

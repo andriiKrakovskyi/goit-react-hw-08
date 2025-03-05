@@ -34,10 +34,19 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       //! logoutThunk
-      .addCase(logoutThunk.fulfilled, () => initialState)
+      // Когда logoutThunk успешно выполняется, глобальное состояние Redux для этого
+      // slice сбрасывается в изначальное состояние (initialState),
+      //  очищая данные, например, пользователя, токены и т. д.
+      // .addCase(logoutThunk.fulfilled, () => initialState)
+
+      .addCase(logoutThunk.fulfilled, (state) => {
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
+      })
 
       //! refreshUserThunk
-
       .addCase(refreshUserThunk.pending, (state) => {
         state.isRefreshing = true;
       })

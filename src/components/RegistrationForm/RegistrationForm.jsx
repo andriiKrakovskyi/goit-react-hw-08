@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operationsAuth';
 // import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 // import toast from 'react-hot-toast';
 
@@ -119,6 +120,13 @@ export default function RegistrationForm() {
             >
               Register
             </button>
+
+            <p className={s.registrationForm_get}>
+              You already have account?
+              <Link className={s.registrationForm_get_link} to="/login">
+                Get IT!
+              </Link>
+            </p>
           </Form>
         )}
       </Formik>

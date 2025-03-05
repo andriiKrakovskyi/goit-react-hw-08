@@ -1,5 +1,4 @@
 import s from './ContactForm.module.css';
-
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { PiUserPlusBold } from 'react-icons/pi';
 import toast from 'react-hot-toast';
@@ -15,17 +14,16 @@ export default function ContactForm() {
   };
 
   const contacts = useSelector(selectContacts);
-
   const dispatch = useDispatch();
 
   // Функция-обработчик создания нового контакта.
   // addContact - имя  createAsyncThunk в HTTP-запросе.
-
   const handleSubmit = (values, actions) => {
     const newContact = {
       name: values.name,
       number: values.number,
     };
+
     // Проверка на дубликаты
     const isDuplicate = contacts?.some(
       (contact) => contact.name.toLowerCase() === newContact.name.toLowerCase(),
@@ -54,6 +52,7 @@ export default function ContactForm() {
         <Form className={s.contactForm_form}>
           <label className={s.contactForm_label}>
             <span className={s.contactForm_span}>Name</span>
+
             <Field
               className={s.contactForm_field}
               name="name"

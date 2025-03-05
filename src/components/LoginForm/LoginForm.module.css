@@ -88,3 +88,13 @@
 .loginForm_button:hover:not(:disabled) {
   background-color: #0056b3;
 }
+
+.loginForm_get {
+  font-size: 1.6rem;
+}
+
+.loginForm_get_link {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(197, 197, 38);
+}

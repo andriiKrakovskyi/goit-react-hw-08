@@ -87,3 +87,13 @@
 .registrationForm_button:hover:not(:disabled) {
   background-color: #0056b3;
 }
+
+.registrationForm_get {
+  font-size: 1.6rem;
+}
+
+.registrationForm_get_link {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(197, 197, 38);
+}

@@ -6,6 +6,7 @@ import { loginSchema } from './loginSchema';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from '../../redux/auth/operationsAuth';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm() {
@@ -89,6 +90,13 @@ export default function LoginForm() {
             >
               Log In
             </button>
+
+            <p className={s.loginForm_get}>
+              You do not have account yet?{' '}
+              <Link className={s.loginForm_get_link} to="/register">
+                Get IT!
+              </Link>
+            </p>
           </Form>
         )}
       </Formik>

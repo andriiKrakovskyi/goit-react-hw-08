@@ -1,24 +1,28 @@
-.contact_item {
-  padding: 10px 15px;
+.contact_wrapper {
+  display: flex;
+  gap: 25px;
+}
+
+.contact_form {
+  display: flex;
+  gap: 25px;
+  padding: 20px 15px;
   border-radius: 8px;
   box-shadow: 2px 2px 2px 2px grey;
   border: 1px solid black;
-  display: flex;
-  gap: 10px;
+  height: 146px;
   align-items: center;
-  justify-content: space-between;
-  height: 126px;
 }
 
-.contact_wrapper {
+.contact_item {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 25px;
 }
 
 .contact_info {
   display: flex;
-  align-items: center;
+  flex-wrap: nowrap;
   gap: 5px;
 }
 
@@ -27,18 +31,49 @@
   font-size: 20px;
 }
 
-.contact_info p {
-  width: 170px;
-  line-height: 1;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
-  font-size: 2rem;
+.contact_label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
+.contact_field {
+  border: none;
+  font-size: 2rem;
+  width: 215px;
+}
+
+.contact_field:focus {
+  border-bottom: 1px solid #007bff;
+}
+
+.contact_error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  white-space: nowrap;
+  color: #ff4d4f;
+  font-size: 1rem;
+  margin-top: 3px;
+  padding-bottom: 5px;
+}
+
+.contact_text {
+  font-size: 2rem;
+  width: 215px;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.contact_wrapper_button {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 .contact_button {
-  height: 35px;
-  padding: 5px 7px;
+  width: 100px;
+  padding: 7px 7px;
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px grey;
   border: 1px solid black;
@@ -50,6 +85,10 @@
   gap: 5px;
 }
 
+.contact_icon_button {
+  flex-shrink: 0;
+  font-size: 20px;
+}
 .contact_button span {
   font-size: 1.8rem;
   font-weight: bold;
