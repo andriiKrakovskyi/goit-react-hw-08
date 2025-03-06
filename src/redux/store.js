@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
-import { contactReducer } from './Contacts/sliceContacts';
-import { filterReducer } from './Filters/sliceFilters';
-import { authReducer } from './auth/sliceAuth';
+import { contactReducer } from './Contacts/slice';
+import { filterReducer } from './Filters/slice';
+import { authReducer } from './auth/slice';
 
 import {
   persistStore,
@@ -22,7 +22,7 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-const stage = import.meta.env.MODE;
+// const stage = import.meta.env.MODE;
 
 export const store = configureStore({
   reducer: {
@@ -37,7 +37,7 @@ export const store = configureStore({
       },
     }),
   //! делать обязательно когда сайт не в разработке.
-  devTools: stage === 'development',
+  // devTools: stage === 'development',
 });
 
 export const persistor = persistStore(store);

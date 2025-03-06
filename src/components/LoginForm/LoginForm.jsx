@@ -4,9 +4,9 @@ import { CgPassword } from 'react-icons/cg';
 import { HiOutlineMail } from 'react-icons/hi';
 import { loginSchema } from './loginSchema';
 import { useDispatch } from 'react-redux';
-import { loginThunk } from '../../redux/auth/operationsAuth';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { loginThunk } from '../../redux/auth/operations';
 // import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm() {

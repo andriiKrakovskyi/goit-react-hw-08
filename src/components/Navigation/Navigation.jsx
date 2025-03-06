@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { FcHome } from 'react-icons/fc';
 import { FcViewDetails } from 'react-icons/fc';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/auth/selectorsAuth';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(s.navigation_link, isActive && s.navigation_active);

@@ -4,8 +4,8 @@ import {
   addContact,
   deleteContact,
   editContact,
-} from './operationsContacts';
-import { logoutThunk } from '../auth/operationsAuth';
+} from './operations';
+import { logoutThunk } from '../auth/operations';
 
 const initialState = {
   contacts: {

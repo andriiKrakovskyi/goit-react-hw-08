@@ -3,11 +3,10 @@ import { PiUserMinusBold } from 'react-icons/pi';
 import { PiPhoneFill } from 'react-icons/pi';
 import { useDispatch } from 'react-redux';
 import { PiUserFill } from 'react-icons/pi';
-import { deleteContact } from '../../redux/Contacts/operationsContacts';
-import { editContact } from '../../redux/Contacts/operationsContacts';
 import { useEffect, useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { contactSchema } from './contactSchema.js';
+import { deleteContact, editContact } from '../../redux/Contacts/operations.js';
 
 export default function Contact({ name, number, id }) {
   const dispatch = useDispatch();
@@ -126,7 +125,6 @@ export default function Contact({ name, number, id }) {
                 <button
                   className={s.contact_button}
                   aria-label={`Save contact ${name}`}
-                  onClick={handleSubmit}
                   type="submit"
                 >
                   <span>Save</span>

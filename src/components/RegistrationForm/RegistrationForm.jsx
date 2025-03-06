@@ -5,10 +5,10 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { MdDriveFileRenameOutline } from 'react-icons/md';
 import { registrationSchema } from './registrationSchema';
 import { useDispatch } from 'react-redux';
-import { registerThunk } from '../../redux/auth/operationsAuth';
 // import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { registerThunk } from '../../redux/auth/operations';
 // import { useNavigate } from 'react-router-dom';
 // import toast from 'react-hot-toast';
 
