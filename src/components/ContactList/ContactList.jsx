@@ -2,10 +2,12 @@ import s from './ContactList.module.css';
 import { useSelector } from 'react-redux';
 import { selectFilteredContacts } from '../../redux/Filters/selectorsFilters.js';
 import Contact from '../Contact/Contact.jsx';
+import { selectLoading } from '../../redux/Contacts/selectorsContacts.js';
 
 export default function ContactList() {
   const contacts = useSelector(selectFilteredContacts);
-  console.log('TEST', contacts);
+
+  const loading = useSelector(selectLoading);
 
   return (
     <section className={s.contactList_section}>
@@ -17,10 +19,9 @@ export default function ContactList() {
         ))}
       </ul>
 
-      {/* Показываем сообщение, если нет совпадений */}
-      {contacts.length === 0 && (
+      {contacts.length === 0 && !loading ? (
         <p className={s.contactList_message}>No matches found</p>
-      )}
+      ) : null}
     </section>
   );
 }

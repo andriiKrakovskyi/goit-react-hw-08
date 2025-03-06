@@ -26,8 +26,8 @@ export default function Contact({ name, number, id }) {
   const handleSubmit = (values) => {
     dispatch(
       editContact({
-        name: values.name.trim() || name,
-        number: values.number.trim() || number,
+        name: values.name || name,
+        number: values.number || number,
         id: id,
       }),
     );
@@ -140,17 +140,3 @@ export default function Contact({ name, number, id }) {
     </div>
   );
 }
-
-// {
-//   editMode && (
-//     <button
-//       className={s.contact_button}
-//       aria-label={`Save contact ${name}`}
-//       onClick={handleSubmit}
-//       type="submit"
-//     >
-//       <span>Save</span>
-//       <PiUserMinusBold className={s.contact_icon} />
-//     </button>
-//   );
-// }

@@ -21,17 +21,8 @@ function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
 
-  // useEffect(() => {
-  //   dispatch(refreshUserThunk());
-  // }, [dispatch]);
-
   useEffect(() => {
-    const abortController = new AbortController();
-    dispatch(refreshUserThunk({ signal: abortController.signal }));
-
-    return () => {
-      abortController.abort();
-    };
+    dispatch(refreshUserThunk());
   }, [dispatch]);
 
   return isRefreshing ? null : (

@@ -9,8 +9,8 @@ export default function BackButton() {
   //useRef-Позволяет сохраньть значения между рендарами
   //часто работает в связки с location
   //При обновлении странице пропадает state и стает null
-  //для этого делаем (location?.state ?? '/movies')
-  // /movies' как деф значения.
+  //для этого делаем (location?.state ?? '/')
+  // '/movies' как деф значения.
   const goBackUrl = useRef(location?.state ?? '/');
 
   return (

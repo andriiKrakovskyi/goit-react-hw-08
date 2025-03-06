@@ -51,31 +51,10 @@ export const logoutThunk = createAsyncThunk(
   },
 );
 
-export const refreshUserThunk = createAsyncThunk(
-  'auth/refresh',
-  async (arg, thunkAPI) => {
-    try {
-      const persistedToken = thunkAPI.getState().authNameSlice.token;
-
-      if (persistedToken === null) {
-        return thunkAPI.rejectWithValue('Token is not exist!');
-      }
-
-      setAuthHeader(persistedToken);
-
-      const { signal } = arg;
-
-      const { data } = await api.get('/users/current', { signal });
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
-);
-
 // export const refreshUserThunk = createAsyncThunk(
 //   'auth/refresh',
 //   async (_, thunkAPI) => {
+
 //     try {
 //       const persistedToken = thunkAPI.getState().authNameSlice.token;
 
@@ -92,6 +71,27 @@ export const refreshUserThunk = createAsyncThunk(
 //     }
 //   },
 // );
+
+export const refreshUserThunk = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+
+    const persistedToken = state.authNameSlice.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Token is not exist!');
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await api.get('/users/current');
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
 
 //! ==========================================================================
 // !1. Создание экземпляра Axios

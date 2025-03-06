@@ -20,8 +20,6 @@ import { BrowserRouter } from 'react-router-dom';
 // Локальні імпорти (Redux store)
 import { store, persistor } from './redux/store';
 
-// import { StyledEngineProvider } from '@mui/material/styles';
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>

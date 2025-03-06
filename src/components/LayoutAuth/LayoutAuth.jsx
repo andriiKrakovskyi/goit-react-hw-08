@@ -3,6 +3,7 @@ import AppBarAuth from '../AppBarAuth/AppBarAuth';
 import Container from '../Container/Container';
 import { Suspense } from 'react';
 import Loader from '../Loader/Loader';
+
 import Footer from '../Footer/Footer';
 import s from './LayoutAuth.module.css';
 
