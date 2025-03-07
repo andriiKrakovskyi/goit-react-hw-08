@@ -326,4 +326,3 @@ export default function Contact({ name, number, id }) {
     </div>
   );
 }
-//====
