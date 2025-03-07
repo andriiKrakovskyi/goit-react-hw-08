@@ -6,7 +6,7 @@ import { PiUserFill } from 'react-icons/pi';
 import { useEffect, useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { contactSchema } from './contactSchema.js';
-import { deleteContact, editContact } from '../../redux/Contacts/operations.js';
+import { deleteContact, editContact } from '../../redux/contacts/operations.js';
 
 // export default function Contact({ name, number, id }) {
 //   const dispatch = useDispatch();
