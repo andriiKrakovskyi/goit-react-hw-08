@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage';
 // import { authReducer } from './auth/slice';
 import { authReducer } from './auth/slice.js';
 import { contactReducer } from './contacts/slice.js';
-import { filterReducer } from './filters/slice.js';
+import { filterReducer } from './filter/slice.js';
 
 import {
   persistStore,
