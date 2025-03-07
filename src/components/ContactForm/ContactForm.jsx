@@ -4,8 +4,8 @@ import { PiUserPlusBold } from 'react-icons/pi';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { contactSchema } from './contactSchema';
-import { selectContacts } from '../../redux/Contacts/selectors.js';
-import { addContact } from '../../redux/Contacts/operations.js';
+import { selectContacts } from '../../redux/contacts/selectors.js';
+import { addContact } from '../../redux/contacts/operations.js';
 
 export default function ContactForm() {
   const initialValues = {
